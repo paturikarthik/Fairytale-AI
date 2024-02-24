@@ -5,6 +5,7 @@ import '../App.css';
 import GSAPAnimation from './GASPAnimation';
 import { AiOutlineAudio } from 'react-icons/ai';
 import { AiFillAudio } from 'react-icons/ai';
+<<<<<<< Updated upstream
 import SpeechRecognition, {
     useSpeechRecognition,
 } from 'react-speech-recognition';
@@ -12,6 +13,22 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Select from 'react-select';
+=======
+import OpenAI from 'openai';
+import Queue from '../queue/queue';
+import SpeechRecognition, {
+    useSpeechRecognition,
+} from 'react-speech-recognition';
+import Select from 'react-select';
+const convert = require('pinyin-convert')
+
+const API_KEY = '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';
+const openai = new OpenAI({
+    apiKey: API_KEY,
+    dangerouslyAllowBrowser: true,
+});
+
+>>>>>>> Stashed changes
 
 
 export default function Homepage() {
@@ -33,6 +50,7 @@ export default function Homepage() {
     if (!browserSupportsSpeechRecognition) {
         return <span>Browser doesn't support speech recognition.</span>;
     }
+    console.log(pinyin('你好')); // nǐhǎo
     const buttonClickHandler = () => {
         if (buttonText == 'Talk to me!') {
             setButtonText("I'm listening...");
@@ -42,8 +60,11 @@ export default function Homepage() {
                 continuous: true,
                 language: selectedOption.value,
             });
+<<<<<<< Updated upstream
 
             
+=======
+>>>>>>> Stashed changes
         
         } else {
             setButtonText('Talk to me!');
