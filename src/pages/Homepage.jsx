@@ -5,16 +5,6 @@ import GSAPAnimation from '../components/GSAPAnimation';
 import { AiOutlineAudio } from 'react-icons/ai';
 import { AiFillAudio } from 'react-icons/ai';
 import OpenAI from 'openai';
-<<<<<<< HEAD
-=======
-import Queue from '../queue/queue';
-
-const API_KEY = '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';
-const openai = new OpenAI({
-    apiKey: API_KEY,
-    dangerouslyAllowBrowser: true,
-});
->>>>>>> main
 import SpeechRecognition, {
     useSpeechRecognition,
 } from 'react-speech-recognition';
@@ -25,6 +15,7 @@ const openai = new OpenAI({
     dangerouslyAllowBrowser: true,
 });
 export default function Homepage() {
+    var pinyin = require("chinese-to-pinyin")
     const SUBTITLE_MAX_LENGTH = 30;
     const [buttonState, setButtonState] = useState('button');
     const [image, setImage] = useState(null);
@@ -52,7 +43,12 @@ export default function Homepage() {
     const options = [
         { value: 'en-US', label: 'English' },
         { value: 'zh-CN', label: 'Chinese 中文' },
-        { value: 'ko', label: 'Korean 한국어' }
+        { value: 'ko', label: 'Korean 한국어' },
+        { value: 'es-US', label: 'Espanyol'},
+        { value: 'ta-IN', label: 'Tamil'},
+        { value: 'hi-IN', label: 'Hindi'},
+        { value: 'te', label: 'Telugu'},
+
       ]
       
       const [selectedOption, setSelectedOption] = useState('en-US');
@@ -70,6 +66,7 @@ export default function Homepage() {
                 continuous: true,
                 language: selectedOption.value,
             });
+            console.log(pinyin('中文语句'))
         } else {
             setButtonText('Talk to me!');
             SpeechRecognition.stopListening();
